@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arena</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div id="navbar" class="mb-1">
+      <% if notice %>
+        <div id="notice" class="toast toast-success"><button class="btn btn-clear float-right" onclick="rmflash(this)"></button><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div id="alert" class="toast toast-error"><button class="btn btn-clear float-right" onclick="rmflash(this)"></button><%= alert %></div>
+      <% end %>
+    </div>
+    <%= yield %>
+    <script>function rmflash(x){x.parentElement.remove()}</script>
+  </body>
+</html>

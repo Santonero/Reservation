@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "new_search" do %>
+  <%= form_with url: "/search", method: :get, html: { "data-turbo-stream": "", "data-turbo-frame": "_top" } do |form| %>
+    <div class="input-group">
+      <%= form.text_field :query, placeholder: "Nom de Spectacle", class: "form-input" %>
+      <%= form.submit "Rechercher", class: "btn btn-primary input-group-btn" %>
+    </div>
+  <% end %>
+<% end %>

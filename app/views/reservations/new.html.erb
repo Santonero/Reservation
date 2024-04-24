@@ -1,0 +1,13 @@
+<div class="column col-6 col-xl-8 col-lg-10 col-md-10 col-sm-12 col-xs-12 p-centered">
+  <h1>Importer vos Réservations</h1>
+  <%= form_with url: reservations_path, id: "import" do |form| %>
+    <div class="input-group">
+      <span class="input-group-addon">Importer CSV</span>
+      <%= form.file_field :file, accept: ".csv", class: "form-input" %>
+      <%= form.submit "Importer", class: "btn btn-primary input-group-btn" %>
+    </div>
+  <% end %>
+  <div class="my-2"><%= link_to "Visualisation des données", reservations_path %></div>
+  <div><%= link_to "Choisir nom des colonnes", custom_path, "data-turbo-stream": "", id: "choisir" %></div>
+  <div id="custo"></div>
+</div>

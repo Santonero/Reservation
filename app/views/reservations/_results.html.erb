@@ -1,0 +1,10 @@
+<div>Nombre de réservations : <%= @reservations.count %></div>
+<div>Nombre d'acheteurs uniques : <%= @reservations.distinct.count(:email) %></div>
+<div>
+  Age moyen des acheteurs :
+  <% if @reservations.average(:age).nil? %>
+    Non spécifié.
+  <% else %>
+    <%= "#{@reservations.average(:age).floor} ans" %>
+  <% end %>
+</div>

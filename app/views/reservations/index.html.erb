@@ -1,0 +1,30 @@
+<div class="column col-6 col-xl-8 col-lg-10 col-md-10 col-sm-12 col-xs-12 p-centered text-center">
+  <%= link_to "Importer CSV", new_reservation_path, class: "btn btn-lg" %>
+  <h1>Récapitulatif des données</h1>
+  <div id="total">
+    <h4>Total: </h4>
+    <div>Nombre de réservations : <%= @reservations&.count %></div>
+    <div>Nombre d'acheteurs uniques : <%= @reservations.distinct&.count(:email) %></div>
+    <div>
+      Age moyen des acheteurs :
+      <% if @reservations.average(:age).nil? %>
+        Non spécifié.
+      <% else %>
+        <%= "#{@reservations.average(:age).floor} ans" %>
+      <% end %>
+    </div>
+  </div>
+
+  <h4><%= link_to "Rechercher pour un spectacle", new_search_path, "data-turbo-frame": "new_search" %></h4>
+  <%= turbo_frame_tag "new_search" %>
+  <div id="results"></div>
+  <div class="divider"></div>
+  <h2>Prix moyen par représentation: </h2>
+  <% if @reservations.any? %>
+    <% @reservations.group(:represent).average(:price).each do |k, v| %>
+      <div class="m-1"><span class="label label-primary"><%= k %> :</span> <%= "#{v.to_f.round(2)} €" %></div>
+    <% end %>
+  <% else %>
+    <div>Aucune donnée fournie.</div>
+  <% end %>
+</div>

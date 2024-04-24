@@ -1,0 +1,5 @@
+<%= turbo_stream.update "import", partial: "custom", locals: { reservation: @reservation } %>
+<%= turbo_stream.replace "choisir" do %>
+  <div class="my-2"><%= link_to "Revenir", new_reservation_path %></div>
+<% end %>
+<%= turbo_stream.remove "alert" %>

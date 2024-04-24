@@ -1,0 +1,51 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_billet: 1
+  num_reserv: 1
+  date: 2024-04-23 15:06:34
+  hour: 2024-04-23 15:06:34
+  show_key: 1
+  show: foo
+  represent_key: 1
+  represent: MyString
+  represent_date: 2024-04-23
+  represent_hour: 2024-04-23 15:06:34
+  represent_end_date: 2024-04-23
+  represent_end_hour: 2024-04-23 15:06:34
+  price: 9.99
+  product_type: MyString
+  sales_channel: MyString
+  lastname: MyString
+  firstname: MyString
+  email: MyString
+  adress: MyString
+  pcode: 1
+  country: MyString
+  age: 1
+  gender: MyString
+
+two:
+  num_billet: 1
+  num_reserv: 1
+  date: 2024-04-23 15:06:34
+  hour: 2024-04-23 15:06:34
+  show_key: 1
+  show: MyString
+  represent_key: 1
+  represent: MyString
+  represent_date: 2024-04-23
+  represent_hour: 2024-04-23 15:06:34
+  represent_end_date: 2024-04-23
+  represent_end_hour: 2024-04-23 15:06:34
+  price: 9.99
+  product_type: MyString
+  sales_channel: MyString
+  lastname: MyString
+  firstname: MyString
+  email: MyString
+  adress: MyString
+  pcode: 1
+  country: MyString
+  age: 1
+  gender: MyString
