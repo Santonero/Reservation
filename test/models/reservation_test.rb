@@ -7,7 +7,7 @@ class ReservationTest < ActiveSupport::TestCase
   end
 
   test "should not allow duplicate ticket number" do
-    reserv1 = Reservation.create(num_billet: "123456", price: "20", email: "shade@shade.fr")
+    Reservation.create(num_billet: "123456", price: "20", email: "shade@shade.fr")
     reserv2 = Reservation.new(num_billet: "123456", price: "20", email: "shade@shade.fr")
     assert_not reserv2.save, "Saved a duplicate ticket number"
   end

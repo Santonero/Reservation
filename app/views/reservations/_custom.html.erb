@@ -1,5 +1,4 @@
 <%= form_with model: reservation, url: reservations_path do |form| %>
-  <%= form.hidden_field :custom, value: true%>
   <%= form.label "Fichier CSV" %>
   <%= form.file_field :file, accept: ".csv", class: "form-input" %>
   <%= form.label :num_billet, "Numero billet", class: "form-label" %>

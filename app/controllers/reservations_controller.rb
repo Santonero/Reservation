@@ -24,13 +24,11 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    if params[:reservation]&.[](:custom)
-      return redirect_to new_reservation_url, alert: "Aucun fichier." if params[:reservation][:file].nil?
-      return redirect_to new_reservation_url, alert: "Seulement les fichiers CSV sont autorisés." unless params[:reservation][:file].content_type == "text/csv"
-      CsvImport.new.customcall(reservation_params)
+    if params[:reservation]
+      check(params[:reservation][:file]); return if performed?
+      CsvImport.new.call(reservation_params)
     else
-      return redirect_to new_reservation_url, alert: "Aucun fichier." if params[:file].nil?
-      return redirect_to new_reservation_url, alert: "Seulement les fichiers CSV sont autorisés." unless params[:file].content_type == "text/csv"
+      check(params[:file]); return if performed?
       CsvImport.new.call(params[:file])
     end
     redirect_to new_reservation_url, notice: "Données importées."
@@ -44,6 +42,11 @@ class ReservationsController < ApplicationController
   end
 
   private
+
+  def check(file)
+    return redirect_to new_reservation_url, alert: "Aucun fichier." if file.nil?
+    return redirect_to new_reservation_url, alert: "Seulement les fichiers CSV sont autorisés." unless file.content_type == "text/csv"
+  end
 
   def reservation_params
     params.require(:reservation).permit(:file, :num_billet, :num_reserv, :date, :hour, :show_key, :show, :represent_key, :represent, :represent_date, :represent_hour, :represent_end_date, :represent_end_hour, :price, :product_type, :sales_channel, :lastname, :firstname, :email, :adress, :pcode, :country, :age, :gender)
